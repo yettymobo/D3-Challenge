@@ -113,3 +113,9 @@ circlesGroup.on("mouseover", function(data) {
     toolTip.show(data);
 })
 
+// onmouseout event for circles Group
+.on("mouseout", function(data, index) {
+    toolTip.hide(data);
+ });
+
+ 
