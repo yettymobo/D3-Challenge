@@ -33,15 +33,19 @@ d3.csv("assets/data/data.csv").then(function(data) {
       d.healthcare = +d.healthcare;
     });
   
-// Create x scale function
+// Create x scale variable
 var xLinearScale = d3.scaleLinear()
     .domain([d3.min(data, d => d.poverty), d3.max(data, d => d.poverty)])
     .range([0, chartWidth])
     .nice();
   
-// Create y scale function
+// Create y scale variable
 var yLinearScale = d3.scaleLinear()
     .domain([d3.min(data, d => d.healthcare), d3.max(data, d => d.healthcare)])
     .range([chartHeight, 0])
     .nice();
  
+// Create initial axis functions
+var bottomAxis = d3.axisBottom(xLinearScale);
+var leftAxis = d3.axisLeft(yLinearScale);
+
