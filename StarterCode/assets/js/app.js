@@ -86,4 +86,11 @@ chartGroup.append("text")
     .attr("class", "aText")
     .text("In Poverty (%)") 
 
-
+// append y axis label
+chartGroup.append("text")
+.attr("transform", "rotate(-90)")
+.attr("y", 0 - margin.left)
+.attr("x", 0 - (chartHeight / 2))
+.attr("dy", "1em")
+.classed("aText", true)
+.text("Lacks Healthcare (%)");
