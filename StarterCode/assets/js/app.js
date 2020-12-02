@@ -60,7 +60,7 @@ chartGroup.append("g")
   .call(leftAxis);
 
    // append circles
-var circlesGroup = chartGroup.selectAll("circle")
+var circlesGroup = chartGroup.selectAll(".stateCircle")
    .data(data)
    .enter()
    .append("circle")
@@ -71,14 +71,19 @@ var circlesGroup = chartGroup.selectAll("circle")
    .attr("opacity", ".8");
 
    // append text in middle of circles
-var circleText = chartGroup.selectAll(null)
-.data(data)
-.enter()
-.append("text")
-.attr("x", d => xLinearScale(d.poverty))
-.attr("y", d => yLinearScale(d.healthcare))
-.text(d => yLinearScale(d.abbr))
-.attr("font-family", "sans-serif")
-.attr("font-size", "5px")
-.attr("fill", "white")
-.attr('text-anchor', 'middle');
+var circleText = chartGroup.selectAll(".stateText")
+    .data(data)
+    .enter()
+    .append("text")
+    .attr("x", d => xLinearScale(d.poverty))
+    .attr("y", d => yLinearScale(d.healthcare))
+    .text(d => yLinearScale(d.abbr))
+    .attr('text-anchor', 'middle');
+
+// append x axis label
+chartGroup.append("text")
+    .attr("transform", `translate(${chartWidth / 2}, ${chartHeight + 20})`)
+    .attr("class", "aText")
+    .text("In Poverty (%)") 
+
+
