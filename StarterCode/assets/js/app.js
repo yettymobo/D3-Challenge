@@ -108,3 +108,8 @@ var toolTip = d3.tip()
 // create tooltip
 chartGroup.call(toolTip);
 
+// onmousever event for circles Group
+circlesGroup.on("mouseover", function(data) {
+    toolTip.show(data);
+})
+
