@@ -15,7 +15,7 @@ var chartHeight = svgHeight - margin.top - margin.bottom;
 // Create an SVG wrapper, append an SVG group that will hold our chart,
 // and shift the latter by left and top margins.
 var svg = d3
-  .select(".scatter-plot")
+  .select(".scatter")
   .append("svg")
   .attr("width", svgWidth)
   .attr("height", svgHeight);
@@ -32,7 +32,7 @@ d3.csv("assets/data/data.csv").then(function(data) {
       d.poverty = +d.poverty;
       d.healthcare = +d.healthcare;
     });
-  
+
 // Create x scale variable
 var xLinearScale = d3.scaleLinear()
     .domain([d3.min(data, d => d.poverty), d3.max(data, d => d.poverty)])
