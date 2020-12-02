@@ -59,9 +59,9 @@ var xAxis = chartGroup.append("g")
 chartGroup.append("g")
   .call(leftAxis);
 
-   // append initial circles
-   var circlesGroup = chartGroup.selectAll("circle")
-   .data(hairData)
+   // append circles
+var circlesGroup = chartGroup.selectAll("circle")
+   .data(data)
    .enter()
    .append("circle")
    .attr("cx", d => xLinearScale(d.poverty))
@@ -69,3 +69,16 @@ chartGroup.append("g")
    .attr("r", 20)
    .attr("fill", "blue")
    .attr("opacity", ".8");
+
+   // append text in middle of circles
+var circleText = chartGroup.selectAll(null)
+.data(data)
+.enter()
+.append("text")
+.attr("x", d => xLinearScale(d.poverty))
+.attr("y", d => yLinearScale(d.healthcare))
+.text(d => yLinearScale(d.abbr))
+.attr("font-family", "sans-serif")
+.attr("font-size", "5px")
+.attr("fill", "white")
+.attr('text-anchor', 'middle');
