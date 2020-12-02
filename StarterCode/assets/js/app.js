@@ -24,3 +24,14 @@ var svg = d3
 var chartGroup = svg.append("g")
   .attr("transform", `translate(${margin.left}, ${margin.top})`);
 
+// Retrieve data from the CSV file and execute everything below
+d3.csv("assets/data/data.csv").then(function(data) {
+
+    // parse data
+    data.forEach(function(d) {
+      d.poverty = +d.poverty;
+      d.healthcare = +d.healthcare;
+    });
+  
+
+ 
