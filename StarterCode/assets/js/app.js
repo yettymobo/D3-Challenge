@@ -49,3 +49,12 @@ var yLinearScale = d3.scaleLinear()
 var bottomAxis = d3.axisBottom(xLinearScale);
 var leftAxis = d3.axisLeft(yLinearScale);
 
+// append x axis
+var xAxis = chartGroup.append("g")
+  .classed("x-axis", true)
+  .attr("transform", `translate(0, ${chartHeight})`)
+  .call(bottomAxis);
+
+// append y axis
+chartGroup.append("g")
+  .call(leftAxis);
