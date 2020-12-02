@@ -105,3 +105,6 @@ var toolTip = d3.tip()
 
     });
 
+// create tooltip
+chartGroup.call(toolTip);
+
