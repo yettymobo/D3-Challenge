@@ -50,8 +50,7 @@ var bottomAxis = d3.axisBottom(xLinearScale);
 var leftAxis = d3.axisLeft(yLinearScale);
 
 // append x axis
-var xAxis = chartGroup.append("g")
-  .classed("x-axis", true)
+chartGroup.append("g")
   .attr("transform", `translate(0, ${chartHeight})`)
   .call(bottomAxis);
 
@@ -108,14 +107,24 @@ var toolTip = d3.tip()
 // create tooltip
 chartGroup.call(toolTip);
 
-// onmousever event for circles Group
+// onmousever event for circlesGroup
 circlesGroup.on("mouseover", function(data) {
     toolTip.show(data);
 })
 
-// onmouseout event for circles Group
+// onmouseout event
 .on("mouseout", function(data, index) {
     toolTip.hide(data);
  });
 
+// onmousever event for circleText
+circleText.on("mouseover", function(data) {
+    toolTip.show(data);
+})
+
+
+
  
+}).catch(function(error) {
+ console.log(error);
+});
