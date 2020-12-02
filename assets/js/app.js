@@ -41,7 +41,7 @@ var xLinearScale = d3.scaleLinear()
   
 // Create y scale variable
 var yLinearScale = d3.scaleLinear()
-    .domain([d3.min(data, d => d.healthcare), d3.max(data, d => d.healthcare)])
+    .domain([d3.min(data, d => d.healthcare)-1, d3.max(data, d => d.healthcare)])
     .range([chartHeight, 0])
     .nice();
  
