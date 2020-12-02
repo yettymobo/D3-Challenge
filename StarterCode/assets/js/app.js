@@ -58,3 +58,14 @@ var xAxis = chartGroup.append("g")
 // append y axis
 chartGroup.append("g")
   .call(leftAxis);
+
+   // append initial circles
+   var circlesGroup = chartGroup.selectAll("circle")
+   .data(hairData)
+   .enter()
+   .append("circle")
+   .attr("cx", d => xLinearScale(d.poverty))
+   .attr("cy", d => yLinearScale(d.healthcare))
+   .attr("r", 20)
+   .attr("fill", "blue")
+   .attr("opacity", ".8");
