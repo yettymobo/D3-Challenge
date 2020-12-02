@@ -15,7 +15,7 @@ var chartHeight = svgHeight - margin.top - margin.bottom;
 // Create an SVG wrapper, append an SVG group that will hold our chart,
 // and shift the latter by left and top margins.
 var svg = d3
-  .select(".scatter")
+  .select(".chart")
   .append("svg")
   .attr("width", svgWidth)
   .attr("height", svgHeight);
@@ -59,29 +59,32 @@ chartGroup.append("g")
   .call(leftAxis);
 
    // append circles
-var circlesGroup = chartGroup.selectAll(".stateCircle")
+var circlesGroup = chartGroup.selectAll("circle")
    .data(data)
    .enter()
    .append("circle")
    .attr("cx", d => xLinearScale(d.poverty))
    .attr("cy", d => yLinearScale(d.healthcare))
    .attr("r", 20)
-   .attr("fill", "blue")
+   .classed("stateCircle", true)
    .attr("opacity", ".8");
 
    // append text in middle of circles
-var circleText = chartGroup.selectAll(".stateText")
+var circleText = chartGroup.selectAll(null)
     .data(data)
     .enter()
     .append("text")
     .attr("x", d => xLinearScale(d.poverty))
     .attr("y", d => yLinearScale(d.healthcare))
-    .text(d => yLinearScale(d.abbr))
+    .classed("stateText", true)
+    .text(function(d){
+      return d.abbr
+      })
     .attr('text-anchor', 'middle');
 
 // append x axis label
 chartGroup.append("text")
-    .attr("transform", `translate(${chartWidth / 2}, ${chartHeight + 20})`)
+    .attr("transform", `translate(${chartWidth / 2}, ${chartHeight + 60})`)
     .classed("aText", true)
     .text("In Poverty (%)") 
 
@@ -96,10 +99,10 @@ chartGroup.append("text")
 
 // initialize tooltip
 var toolTip = d3.tip()
-    .attr("class", "tooltip")
-    .offset([80, -60])
+    .attr("class", "d3-tip")
+    .offset([80, 80])
     .html(function(d) {
-      return (`${d.abbr}<br>"Poverty %:"${d.poverty} <br>"Healthcare %:" ${d.healthcare}`);
+      return (`${d.abbr}<br>Poverty:${d.poverty} <br>Healthcare: ${d.healthcare}`);
 
 
     });
@@ -109,7 +112,7 @@ chartGroup.call(toolTip);
 
 // onmousever event for circlesGroup
 circlesGroup.on("mouseover", function(data) {
-    toolTip.show(data);
+    toolTip.show(data, this);
 })
 
 // onmouseout event
@@ -119,7 +122,7 @@ circlesGroup.on("mouseover", function(data) {
 
 // onmousever event for circleText
 circleText.on("mouseover", function(data) {
-    toolTip.show(data);
+    toolTip.show(data, this);
 })
 
 // onmouseout event 
