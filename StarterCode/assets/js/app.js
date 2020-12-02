@@ -83,14 +83,25 @@ var circleText = chartGroup.selectAll(".stateText")
 // append x axis label
 chartGroup.append("text")
     .attr("transform", `translate(${chartWidth / 2}, ${chartHeight + 20})`)
-    .attr("class", "aText")
+    .classed("aText", true)
     .text("In Poverty (%)") 
 
 // append y axis label
 chartGroup.append("text")
-.attr("transform", "rotate(-90)")
-.attr("y", 0 - margin.left)
-.attr("x", 0 - (chartHeight / 2))
-.attr("dy", "1em")
-.classed("aText", true)
-.text("Lacks Healthcare (%)");
+    .attr("transform", "rotate(-90)")
+    .attr("y", 0 - margin.left)
+    .attr("x", 0 - (chartHeight / 2))
+    .attr("dy", "1em")
+    .classed("aText", true)
+    .text("Lacks Healthcare (%)");
+
+// initialize tooltip
+var toolTip = d3.tip()
+    .attr("class", "tooltip")
+    .offset([80, -60])
+    .html(function(d) {
+      return (`${d.abbr}<br>"Poverty %:"${d.poverty} <br>"Healthcare %:" ${d.healthcare}`);
+
+
+    });
+
