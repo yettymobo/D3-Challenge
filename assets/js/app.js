@@ -35,7 +35,7 @@ d3.csv("assets/data/data.csv").then(function(data) {
 
 // Create x scale variable
 var xLinearScale = d3.scaleLinear()
-    .domain([d3.min(data, d => d.poverty), d3.max(data, d => d.poverty)])
+    .domain([d3.min(data, d => d.poverty)* 0.95, d3.max(data, d => d.poverty)*1.02])
     .range([0, chartWidth])
     .nice();
   
@@ -102,7 +102,7 @@ var toolTip = d3.tip()
     .attr("class", "d3-tip")
     .offset([80, 80])
     .html(function(d) {
-      return (`${d.abbr}<br>Poverty:${d.poverty} <br>Healthcare: ${d.healthcare}`);
+      return (`${d.abbr}<br>Poverty: ${d.poverty} <br>Healthcare: ${d.healthcare}`);
 
 
     });
