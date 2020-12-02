@@ -84,17 +84,17 @@ var circleText = chartGroup.selectAll(null)
 
 // append x axis label
 chartGroup.append("text")
-    .attr("transform", `translate(${chartWidth / 2}, ${chartHeight + 60})`)
-    .classed("aText", true)
+    .attr("transform", `translate(${chartWidth / 2 }, ${chartHeight + 50})`)
+    .classed("active", true)
     .text("In Poverty (%)") 
 
 // append y axis label
 chartGroup.append("text")
     .attr("transform", "rotate(-90)")
-    .attr("y", 0 - margin.left)
+    .attr("y", 0 - margin.left + 40)
     .attr("x", 0 - (chartHeight / 2))
     .attr("dy", "1em")
-    .classed("aText", true)
+    .classed("active", true)
     .text("Lacks Healthcare (%)");
 
 // initialize tooltip
