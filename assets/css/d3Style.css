@@ -32,7 +32,12 @@
 
 .stateCircle {
   fill: #89bdd3;
-  stroke: #e3e3e3;
+  stroke: #f7e8e8;
+}
+
+.stateCircle:hover {
+  stroke: black;
+  stroke-width: 2px;
 }
 
 .chart {
