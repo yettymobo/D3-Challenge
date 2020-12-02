@@ -122,6 +122,10 @@ circleText.on("mouseover", function(data) {
     toolTip.show(data);
 })
 
+// onmouseout event 
+.on("mouseout", function(data, index) {
+    toolTip.hide(data);
+ });
 
 
  
